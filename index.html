@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+	<title>M-Connect</title>
+	<link href="views/mybootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
+	<link href="views/mybootstrap/docs/assets/css/index.css" rel="stylesheet">
+	<link href="views/mybootstrap/FortAwesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="views/mybootstrap/docs/assets/css/custom.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<header>
+		<input type="button" name="btnSignIn" value="Sign In" class="span3 btn-success btn-large" onclick="signIn()">
+	</header>
+
+	<section>
+		<!-- Log In Form -->
+		<div id="logInForm" style="width: 325px;" name="signinDiv">
+			<div class="formHeader">
+				Login
+			</div>
+
+			<div class="formDivs">
+				<div class="alert alert-danger errorDiv" id="logInError" style="margin-left: -2px; width:238px;"></div>
+				<form name = "signin" id = "signin" class = "signin" method="post">
+					<div class="control-group input-prepend">
+						<span class="add-on" style="width: 87px;"><i class="icon-user"></i> Username</span>
+						<input type="text" name="logInusername" id="logInusername" class="logInformField" onblur="validate('logInusername',6);" onkeyup="validate('logInusername',6);">
+					</div>
+
+					<div class="control-group input-prepend">
+						<span class="add-on" style="width: 87px;"><i class="icon-key"></i> Password</span>
+						<input type="password" name="logInpassword" class="logInformField" ><!-- onblur="validate('logInusername',6);" onkeyup="validate('logInusername',6);"> -->
+					</div>
+
+					<input type="submit" name="login" value="Log In" class="btn btn-primary span4 frmBtn" style="margin-top: 0px;">
+				</form>
+			</div>
+		</div>
+
+		<div id="valueProposition" class="myspace">
+			<div class="btn vp">
+				<div>
+					<a href="" class="icon-user icon-4x"></a>
+				</div>
+				<div>
+					<h4>Member Info.</h4>
+				</div>
+			</div>
+			<div class="btn vp">
+				<div>
+					<a href="" class=" icon-mobile-phone icon-4x"></a>
+				</div>
+				<div>
+					<h4>Bulk SMS</h4>
+				</div>
+			</div>
+			<div class="btn vp">
+				<div>
+					<a href="" class="icon-envelope icon-4x"></a>
+				</div>
+				<div>
+					<h4>Group Email</h4>
+				</div>
+			</div>
+		</div>
+		
+		<div id="welcomemessage" class="myspace">
+			mConnect provides <b>Organizations, Societies</b> and <b>Associations</b> an <b>online platform</b> to manage member information 
+			as well as <b>Engage Efficiently</b> with members through <b>Personalized Bulk SMS</b> and <b>Emails.</b>
+		</div>
+
+		<!-- Sign Up -->
+		<div id="signUpForm" name="signupDiv">
+			<div class="formHeader">
+				Create an account on mConnect
+			</div>
+			<div class="formDivs">
+				<div class="alert alert-danger errorDiv" id="signUpError"></div>
+				<form name ="signup" name="signup" class ="signup" method="post">
+					<div class="control-group input-prepend">
+						<span class="add-on" style="width: 135px;">Name of Organization</span>
+						<input type="text" name="orgName" class="signUpformField">
+					</div>
+
+					<div class="control-group input-prepend">
+						<span class="add-on" style="width: 135px;">Email Address</span>
+						<input type="email" name="email" class="signUpformField">
+					</div>
+
+					<div class="control-group input-prepend">
+						<span class="add-on" style="width: 135px;">Username</span>
+						<input type="text" name="username" class="signUpformField">
+					</div>
+
+					<div class="control-group input-prepend">
+						<span class="add-on" style="width: 135px;">Password</span>
+						<input type="password" name="password" class="signUpformField">
+					</div>
+
+					<div class="control-group input-prepend">
+						<span class="add-on" style="width: 135px;">Confirm Password</span>
+						<input type="password" name="confPassword" class="signUpformField">
+					</div>
+
+					<label>
+						<input type="checkbox" name="terms" style="margin-bottom: 10px;" onclick="enableBtnSignUp(this);">
+						I agree with the <a href="#">Terms and Conditions</a>. </label>
+
+					<input type="submit" class="btn btn-primary span4 frmBtn" value="Sign Up" style="width:415px;" id="signupbtn" disabled>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<input type="button" name="btnSignUp" value="Create an Account" class="span3 btn-danger btn-large" onclick="signUp()">
+	</footer>
+	<div style="margin-left: 125px;" class="row">
+		<div class="span5 pull-left">
+			<h5>mConnect &copy; 2013</h5>
+		</div>
+		<div class="span4 pull-right myspace">
+			<span><i class="icon-phone"></i>  &nbsp; + 233-249-407-233 &nbsp;</span></br>
+			<span><i class="icon-envelope"></i>  &nbsp; info@mconnect.com  &nbsp;</span>
+		</div>
+	</div>
+
+	<script src="views/mybootstrap/docs/assets/js/jquery.js"></script>
+	<script src="views/mybootstrap/docs/assets/js/index.js"></script>
+	<script src="views/mybootstrap/js/validation.js"></script>
+	<script src="views/ajax/authentication.js"></script>
+</body>
+</html>
+

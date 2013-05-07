@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>mConnect</title>
+		<link href="views/mybootstrap/docs/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<link href="views/mybootstrap/FortAwesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="views/mybootstrap/docs/assets/css/custom.css" rel="stylesheet" type="text/css">
+	</head>
+	<body onload="mygo(); checkSession(); logout();">
+
+		<!-- ##############################################################################  Navigation #######################################################-->
+		<div class="navbar navbar-fixed-top navbar-inverse">
+			<div class="navbar-inner">
+				<div class="container">
+
+					<span class="brand"  name="top" style="color: #f90; font-weight: bold; text-shadow: 1px #fff;">mConnect</span>
+					<ul class="nav">
+						<li id="tab0" class="active"  onclick="tabclick(0);" >
+							<a href="#"><i class="icon-home"></i></a>
+						</li>
+						<li id="tab1" onclick="tabclick(1);">
+							<a href="#"><i class="icon-group"></i> Members</a>
+						</li>
+						<!-- <li id="tab2" onclick="tabclick(2);">
+						<a href="#Groups"><i class="icon-sitemap"></i> Groups</a>
+						</li> -->
+						<li id="tab4" onclick="tabclick(4);">
+							<a href="#Messages"><i class="icon-envelope"></i> Messaging</a>
+						</li>
+						<li id="tab5" onclick="tabclick(5);">
+							<a href="#Subscription"><i class="icon-sitemap"></i> Groups</a>
+						</li>
+						<!-- <li id="tab7" onclick="tabclick(7);">
+							<a href="#Payment"><i class="icon-user"></i> Payments</a>
+						</li> -->
+					</ul>
+
+					<ul class="nav pull-right">
+						<!-- style=" margin-right: -200px;" -->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-wrench"></i> Settings <b class="caret"></b> </a>
+							<ul class="dropdown-menu">
+								<li name="importCSV">
+									<a onclick="bootbox.dialog('Upload CSV',[{'label' : 'Upload CSV',
+																			    'class' : 'btn-success',
+																			    'callback': function() {
+																			    	jQuery('#csv_form').submit();}}, 
+																			   {'label' : 'Cancel',
+																			    'class': 'btn-danger',
+																			    'callback':function(){}}
+																			  ]);uploadCSV();">
+									    <i class="icon-cloud-upload"></i> Import CSV</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a onclick="bootbox.dialog('Resert password',[{'label' : 'Reset Password',
+																				    'class' : 'btn-success',
+																				    'callback': function() {
+																				    	passwordReset();}}, 
+																				   {'label' : 'Cancel',
+																				    'class': 'btn-danger',
+																				    'callback':function(){}}
+																				  ]);resetPassword();">
+										<i class="icon-key"></i> Reset Password</a>
+								</li>
+								<li class="divider"></li>
+								<li name="logout">
+									<a href="#"><i class="icon-off"></i> Logout</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- ############################################################################## Main Container #######################################################-->
+
+		<div class="container" style="margin-top:70px;">
+
+			<!-- ############################################################################## Dashboard #######################################################-->
+			<div id="tab0content" class="tabContent">
+				<div class="container-fluid">
+					<div id="shortcuts" class="well mywell">
+						<div id="shortcutsHead" class="dashDivHead">
+							<i class="icon-external-link icon-1x"></i> Shortcuts
+						</div>
+						<div id="shortcutsContent" class="contents">
+							<div class="well icon btn" onclick="tabclick(1);">
+								<div>
+									<a href="#" class="icon-user icon-4x"></a>
+								</div>
+								<div>
+									Members
+								</div>
+							</div>
+							<div class="well icon btn btn" onclick="tabclick(4);mestabclick(4);">
+								<div>
+									<a href="#" class=" icon-mobile-phone icon-4x"></a>
+								</div>
+								<div>
+									SMS
+								</div>
+							</div>
+							<div class="well icon btn" onclick="tabclick(4);mestabclick(1);">
+								<div>
+									<a href="#" class="icon-envelope icon-4x"></a>
+								</div>
+								<div>
+									Email
+								</div>
+							</div>
+							<div class="well icon btn" onclick="tabclick(5);">
+								<div>
+									<a href="#" class="icon-sitemap icon-4x"></a>
+								</div>
+								<div>
+									Groups
+								</div>
+							</div>							
+							<div class="well icon btn" <a onclick="bootbox.dialog('Upload CSV',[{'label' : 'Upload CSV',
+																			    'class' : 'btn-success',
+																			    'callback': function() {
+																			    	jQuery('#csv_form').submit();}}, 
+																			   {'label' : 'Cancel',
+																			    'class': 'btn-danger',
+																			    'callback':function(){}}
+																			  ]);uploadCSV();">
+								<div>
+									<a href="#" class="icon-cloud-upload icon-4x"></a>
+								</div>
+								<div>
+									Upload CSV
+								</div>
+							</div>
+							<div class="well icon btn" <a onclick="bootbox.dialog('Update Profile',[{'label' : 'Update Profile',
+																			    'class' : 'btn-success',
+																			    'callback': function() {
+																			    	updateProfile();}}, 
+																			   {'label' : 'Cancel',
+																			    'class': 'btn-danger',
+																			    'callback':function(){}}
+																			  ]);myAccount();">
+								<div>
+									<a href="#" class="icon-key icon-4x"></a>
+								</div>
+								<div>
+									My Account
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="shortcuts" class="well mywell">
+						<div id="shortcutsHead" class="dashDivHead">
+							<i class="icon-signal icon-1x"></i> Statistics
+						</div>
+						<div id="shortcutsContent" class="contents">
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- ############################################################################## Members #######################################################-->
+
+			<div id="tab1content" class="tabContent">
+				<ul class="nav nav-pills">
+					<li id="memTab1" class="memtab active"  onclick="memtabclick(1); listMembers()" onfocus="listMembers()">
+						<a href="#">Members</a>
+					</li>
+					<li id="memTab2"  class="memtab" onclick="memtabclick(2);">
+						<a href="#">New Member</a>
+					</li>
+					<li id="memsearcharea" class="pull-right">
+						<form class="form-horizontal">
+							<!-- <select id="groupHeadings" name="searchfilter" class="input-xlarge span2" onchange="filterGroupTable()">
+
+							</select> -->
+							<input id="memberSearch" type="text" placeholder="Search for Member here" class="input-xlarge search-query" onfocus="memtabclick(1);">
+						</form>
+					</li>
+				</ul>
+
+				<div id="searcharea" class=""></div>
+
+				<!-- =================== Membership List tab1content=========================== -->
+				<div id="memtab1content" class="memtabContent">
+					<table class="table table-bordered table-hover table-striped" id="memberTable">
+						<thead>
+							<th id="memtabnum">#</th>
+							<th id="memtabname">Name of Member</th>
+							<!-- <th id="memtabgender">Gender</th> -->
+							<th id="memtabemail">Email</th>
+							<th id="memtabphone">Phone Number</th>
+							<th id="memtabaddress">Address</th>
+							<th id="memtabicons">Actions</th>
+						</thead>
+						<tbody id="memberlist">
+
+						</tbody>
+					</table>
+				</div>
+				
+				<!-- =================== Membership Form =========================== -->
+				<div id="memtab2content" class="memtabContent">
+					<div class="span7" style="margin:0px auto; margin-left:250px;">
+						<div class="alert alert-success errorDiv" id="memberSuccess"></div>
+						<div class="alert alert-error errorDiv" id="memberError"></div>
+
+						<form class="" name="membership" method="post">
+
+							<div class="span6">
+								<div class="control-group input-prepend">
+									<span class="add-on" style="width: 80px;">Title</span>
+									<select id="title" name="title" class="input-xlarge wid347" style="width: 300px;">
+										<option>Select</option>
+										<option>Mr.</option>
+										<option>Miss.</option>
+										<option>Mrs.</option>
+										<option>Dr.</option>
+										<option>Prof.</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="span6">
+								<div class="control-group input-prepend">
+									<span class="add-on" style="width: 80px;">Firstname</span>
+									<input id="firstname" name="firstname" type="text" placeholder="e.g. John" class="input-xlarge wid347 span4">
+								</div>
+							</div>
+
+							<div class="span6">
+								<div class="control-group input-prepend">
+									<span class="add-on" style="width: 80px;">Middle Name</span>
+									<input id="middlename" name="middlename" type="text" placeholder="e.g. Korblah" class="input-xlarge wid347 span4">
+								</div>
+							</div>
+
+							<div class="span6">
+								<div class="control-group input-prepend">
+									<span class="add-on" style="width: 80px;">Lastname</span>
+									<input id="lastname" name="lastname" type="text" placeholder="e.g. Fiati-Kumasenu" class="input-xlarge wid347 span4">
+								</div>
+							</div>
+
+							<div class="span6">
+								<div class="control-group input-prepend">
+									<span class="add-on" style="width: 80px;">Gender</span>
+									<select id="gender" name="gender" class="input-xlarge wid347" style="width: 300px;">
+										<option>Select</option>
+										<option>Male</option>
+										<option>Female</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="span6">
+								<div class="control-group input-prepend">
+									<span class="add-on" style="width: 80px;">Date of Birth</span>
+									<input id="dob" name="dob" type="date" placeholder="" class="input-xlarge wid347 span4">
+								</div>
+							</div>
+
+							<div class="span6">
+								<div class="control-group input-prepend">
+									<span class="add-on" style="width: 80px;">Mobile #</span>
+									<input id="phone2" name="mobile" type="text" placeholder="e.g. 0265487956" class="input-xlarge wid347 span4">
+								</div>
+							</div>
+							<div class="span6">
+								<div class="control-group input-prepend">
+									<span class="add-on" style="width: 80px;">Email</span>
+									<input id="email" name="email" type="text" placeholder="e.g. username@mail.com" class="input-xlarge wid347 span4">
+								</div>
+							</div>
+
+							<div class="span6">
+								<div class="control-group input-prepend">
+									<span class="add-on" style="width: 80px;">Address</span>
+									<input id="address" name="address" type="text" placeholder="e.g. No. 12 Oluklotey Road, Kaneshie - Accra" class="input-xlarge wid347 span4">
+								</div>
+							</div>
+
+							<div class="span6">
+								<div class="control-group input-prepend">
+									<span class="add-on" style="width: 80px;">Reg. Date</span>
+									<input id="dor" name="dor" type="date" placeholder="" class="input-xlarge wid347 span4">
+								</div>
+							</div>
+							
+							<div class="span6">
+								<div class="control-group input-prepend">
+									<span class="add-on" style="width: 80px;">Exp. Date</span>
+									<input id="doe" name="doe" type="date" placeholder="" class="input-xlarge wid347 span4">
+								</div>
+							</div>
+
+							<div class="span6 pull-right" style="width:390px;">
+								<input type="submit" name="submit" value="Register Member" class="btn btn-primary">
+								<input type="reset" name="cancel" value="Cancel" class="btn btn-danger">								
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- ############################################################################## Messaging #######################################################-->
+
+			<div id="tab4content" class="tabContent">
+				<!-- =================== Messages =========================== -->
+				<div id="" class="">
+					<div class="span3" style="margin-left: 0px; ">
+						<ul class="nav nav-tabs nav-stacked" style="background-color: #eee;">
+							<li class="active" id="" onclick="mestabclick(1);">
+								<a href="#">EMAIL</a>
+							</li>
+							<li class=""  id="mestab1"  onclick="mestabclick(1);">
+								<a href="#" id="tabmailcompose"><i class="icon-pencil"></i> Compose</a>
+							</li><!-- 
+							<li  id="mestab2"  onclick="mestabclick(2);">
+								<a href="#" id="tabmailsent"><i class="icon-envelope"></i> Sent <span class="badge  pull-right">100</span></a>
+							</li>
+							<li  id="mestab3" onclick="mestabclick(3);">
+								<a href="#" id="tabmaildraft"><i class="icon-edit"></i> Draft <span class="badge  pull-right">12</span></a>
+							</li> -->
+							<li class="active"  onclick="mestabclick(4);">
+								<a href="#">SMS</a>
+							</li>
+							<li class=""  id="mestab4" onclick="mestabclick(4);">
+								<a href="#" id="tabsmscompose"><i class="icon-pencil"></i> Compose</a>
+							</li><!-- 
+							<li  id="mestab5" onclick="mestabclick(5);">
+								<a href="#" id="tabsmssent"><i class="icon-envelope"></i> Sent <span class="badge  pull-right">21</span></a>
+							</li>
+							<li  id="mestab6" onclick="mestabclick(6);">
+								<a href="#" id="tabsmsscheduled"><i class="icon-calender"></i> Scheduled <span class="badge  pull-right">74</span></a>
+							</li> -->
+						</ul>
+					</div>
+					<div class="span8 thumbnail" style="width:700px; margin-left: 7px;" id="mestabcontent_">
+						<div id="mestab1content" class="mestabContent" style="padding-right: 50px; background-color: #eee;">
+							<form class="form-horizontal" name="composeEmail" method="post">
+								<div class="alert alert-success msgerrorDiv" id="emailSuccess"></div>
+								<div class="alert alert-error msgerrorDiv" id="emailError"></div>
+
+								<fieldset style="margin-left:30px;">
+									<legend>
+										Compose Email
+									</legend>
+									<div class="control-group input-prepend">
+										<span class="add-on" style="width: 80px;">Recipient(s)</span>
+										<select name="emailRecipients"  style="width: 545px;" id="emailRecipients">
+											<option value="">Select Recipient</option>
+										</select>
+									</div>
+
+									<div class="control-group input-prepend">
+										<span class="add-on" style="width: 80px;">Subject</span>
+										<input type="text" name= "emailSubject" placeholder="enter message subject" style="width: 530px;">
+									</div>
+									
+									<div class="control-group input-prepend">
+										<span class="add-on" style="width: 80px;">Salutation</span>
+										<input type="text" name= "emailSalutation" value="Hi" style="width: 530px;">
+									</div>
+
+									<div class="control-group">
+										<textarea class="input-xlarge" id="textarea" rows="6" style="width:623px;" name="emailMessage"></textarea>
+									</div>
+									<div class="control-group">
+										<!-- <label>
+											<input type="checkbox" name="archive" style="margin-bottom: 10px;">
+											Save this message. </label> -->
+									</div>
+									<div class="" style="text-align: right;">
+										<button type="submit" class="btn btn-primary">
+											Send Email
+										</button>
+										<button class="btn" type="reset">
+											Cancel
+										</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+
+						<div id="mestab2content"  class="mestabContent" style="padding-right: 50px;">
+							<ul class="nav nav-pills">
+								<li id="messearcharea" class="pull-right">
+									<form class="form-horizontal">
+										<input id="searchEmail" name="messearchfield" type="text" placeholder="Search Message here" class="input-xlarge search-query" onfocus="mestabclick(1);">
+									</form>
+								</li>
+							</ul>
+							<fieldset>
+								<legend>
+									Sent Emails
+								</legend>
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
+										<th>#</th>
+										<th>Subject</th>
+										<th>Message</th>
+										<th>Recipient(s)</th>
+										<th>Date</th>
+										<th></th>
+									</thead>
+									<tbody id="emailList">
+
+									</tbody>
+								</table>
+							</fieldset>
+						</div>
+
+						<div id="mestab3content"  class="mestabContent" style="padding-right: 50px;">
+							<fieldset>
+								<legend>
+									Draft Emails
+								</legend>
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
+										<th>#</th>
+										<th>Subject</th>
+										<th>Message</th>
+										<th>Recipient(s)</th>
+										<th>Date</th>
+										<th></th>
+									</thead>
+									<tbody id="emailList">
+
+									</tbody>
+								</table>
+							</fieldset>
+						</div>
+
+						<div id="mestab4content" class="mestabContent" style="padding-right: 50px; background-color: #eee; margin-bottom: 0px;" >
+							<form class="form-horizontal" name="composeSMS" method="post">
+								<div class="alert alert-success msgerrorDiv" id="smsSuccess"></div>
+								<div class="alert alert-error msgerrorDiv" id="smsError"></div>
+								<fieldset style="margin-left:30px;">
+									<legend>
+										Compose SMS
+									</legend>
+									<div class="control-group input-prepend">
+										<span class="add-on" style="width: 80px;">Recipient(s)</span>
+										<select name="SMSRecipients"  style="width: 545px;" id="SMSRecipients">
+											<option value="">Select Recipient</option>
+										</select>
+									</div>
+
+									<div class="control-group input-prepend">
+										<span class="add-on" style="width: 80px;">Subject</span>
+										<input type="text" name= "SMSSubject" placeholder="enter message subject" style="width: 530px;">
+									</div>
+									
+									<div class="control-group input-prepend">
+										<span class="add-on" style="width: 80px;">Salutation</span>
+										<input type="text" name= "SMSSalutation" value="Hi" style="width: 530px;">
+									</div>
+
+									<div class="control-group">
+										<textarea class="input-xlarge" id="textarea" rows="6" style="width:623px;" name="SMSMessage"></textarea>
+									</div>
+
+									<div class="control-group" style="display: none;">
+										<div class="span3">
+											<label>
+												<input type="checkbox" name="archive" style="margin-bottom: 10px;">
+												Schedule Message </label>
+										</div>
+										<div class="span3">
+											date parameters
+										</div>
+									</div>
+
+									<div class="" style="text-align: right;">
+										<button type="submit" class="btn btn-primary">
+											Send SMS
+										</button>
+										<button class="btn" type="reset">
+											Cancel
+										</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+
+						<div id="mestab5content" class="mestabContent" style="padding-right: 50px;">
+							<ul class="nav nav-pills">
+								<li id="searchSMS" class="pull-right">
+									<form class="form-horizontal">
+										<input id="messearchfield" name="messearchfield" type="text" placeholder="Search Message here" class="input-xlarge search-query" onfocus="mestabclick(1);">
+									</form>
+								</li>
+							</ul>
+							<fieldset>
+								<legend>
+									Sent SMS
+								</legend>
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
+										<th>#</th>
+										<th>Message</th>
+										<th>Recipient(s)</th>
+										<th>Date</th>
+										<th></th>
+									</thead>
+									<tbody id="smsList">
+
+									</tbody>
+								</table>
+							</fieldset>
+						</div>
+
+						<div id="mestab6content" class="mestabContent" style="padding-right: 50px;">
+							<fieldset>
+								<legend>
+									Scheduled SMS
+								</legend>
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
+										<th>#</th>
+										<th>Message</th>
+										<th>Recipient(s)</th>
+										<th>Date</th>
+										<th></th>
+									</thead>
+									<tbody id="smsList">
+
+									</tbody>
+								</table>
+							</fieldset>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- ############################################################################## New Groups #######################################################-->
+
+			<div id="tab5content" class="tabContent">
+				<ul class="nav nav-pills">
+					<li id="subTab1" class="subtab active"  onclick="subtabclick(1); listGroups()" onfocus="listGroups()">
+						<a href="#">Groups</a>
+					</li>
+					<li id="subTab2"  class="subtab" onclick="subtabclick(2);">
+						<a href="#">New Group</a>
+					</li>
+					<li id="subsearcharea" class="pull-right">
+						<form class="form-horizontal">
+							<input id="subsearchfield" name="subsearchfield" type="text" placeholder="Search Message here" class="input-xlarge search-query" onfocus="subtabclick(1);">
+						</form>
+					</li>
+				</ul>
+
+				<!-- ===================List Groups=========================== -->
+				<div id="subtab1content" class="subtabContent">
+					<table class="table table-bordered table-hover table-striped">
+						<thead class="navbar">
+							<th>#</th>
+							<th class="span3">Group Name</th>
+							<th class="span7">Description</th>
+							<th>Actions</th>
+						</thead>
+						<tbody id="grouplist">
+
+						</tbody>
+					</table>
+				</div>
+
+				<!-- ===================Groups Form=========================== -->
+				<div id="subtab2content" class="subtabContent">
+					<div class="span7" style="margin:0px auto; margin-left:250px;">
+						<div class="alert alert-success errorDiv" id="groupSuccess"></div>
+						<div class="alert alert-error errorDiv" id="groupError"></div>
+
+						<form class="" name="groups" method="post">
+							<div class="span6">
+								<div class="control-group input-prepend">
+									<span class="add-on" style="width: 120px;">Group Name</span>
+									<input id="type" name="type" type="text" placeholder="" class="input-xlarge wid347" style="width: 243px";>
+								</div>
+							</div>
+
+							<div class="span6">
+								<div class="control-group">
+									<label class="control-label">Description: </label>
+									<div class="controls">
+										<textarea class="span5" rows="5" name="description" style="width:375px;"></textarea>
+										<p class="help-block"></p>
+									</div>
+								</div>
+							</div>
+
+							<div class="span6" style="width:390px;">
+								<div class="" style="padding-left: 40px; text-align: right">
+									<input type="submit" name="submit" value="Create Group" class="btn btn-primary">
+									<input type="reset" name="cancel" value="Cancel" class="btn btn-danger">
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<!-- ===================sub tab3content=========================== -->
+					<div id="subtab3content" class="subtabContent well span9">
+						surely did not forget subscription tab 3
+					</div>
+
+					<!-- ===================mes tab4content=========================== -->
+					<div id="subtab4content" class="subtabContent well span9">
+						nor did I forget subscription tab 4
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<script src="views/mybootstrap/docs/assets/js/jquery.js"></script>
+		<script src="views/mybootstrap/docs/assets/js/bootstrap-modal.js"></script>
+		<script src="views/mybootstrap/docs/assets/js/bootstrap-dropdown.js"></script>
+		<script src="views/mybootstrap/docs/assets/js/jquery.quicksearch.js"></script>
+		<script src="views/mybootstrap/docs/assets/js/custom.js"></script>
+		<script src="views/mybootstrap/js/jqueryform.js"></script>
+		<script src="views/mybootstrap/js/validation.js"></script>
+		<script src="views/mybootstrap/js/box.js"></script>
+		<script src="views/ajax/authentication.js"></script>
+		<script src="views/ajax/groupings.js"></script>
+		<script src="views/ajax/members.js"></script>
+		<script src="views/ajax/groups.js"></script>
+		<script src="views/ajax/messages.js"></script>
+		<script src="views/ajax/actions.js"></script>
+		<script src="views/ajax/quicksearch.js"></script>
+		<script src="views/ajax/uploadCSV.js"></script>
+	</body>
+</html>
+

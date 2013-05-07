@@ -1,0 +1,86 @@
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	color: #333;
+	background-color: #eee;
+	background-image: url('../img/tiny_grid.png');
+}
+
+.errorDiv {
+	margin-left: 20px;
+	width: 342px;
+	display: none;
+}
+
+.msgerrorDiv {
+	margin-left: 20px;
+	width: 600px;
+	display: none;
+}
+
+table {
+	background: #E9E9E9;
+}
+
+.dashDivHead thead{
+	position: relative;
+	height: 40px;
+	line-height: 40px;
+	background: #E9E9E9;
+	background: -moz-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fafafa), color-stop(100%, #e9e9e9));
+	background: -webkit-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+	background: -o-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+	background: -ms-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+	background: linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9')";
+	border: 1px solid #D5D5D5;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	-webkit-background-clip: padding-box;
+	box-shadow: 5px 5px 5px -1px rgb(214, 214, 214);
+}
+
+.mywell {
+	background: #eee;
+	width: 805px;
+	min-height: 100px;
+	margin: 0 auto 20px auto;
+	padding: 3px 0 0 0;
+}
+
+.contents {
+	background: #fefefe;
+	min-height: 125px;
+	margin: 0 0 0px 0;
+	padding: 20px 0 0 20px;
+}
+
+.icon {
+	width: 85px;
+	height: 85px;
+	float: left;
+	padding-top:13px;
+	margin: 0px 19.7px 0px 0px;
+	text-align: center;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.icon a:hover{text-decoration: none;}
+
+.dashDivHead{padding:10px 0px 10px 10px;
+			 font-size: 1.3em;
+			 font-weight: bold;
+			 }
+
+.add-on{background-color: #ddd !important;}
+
+ul ul li{cursor: pointer;}
+
